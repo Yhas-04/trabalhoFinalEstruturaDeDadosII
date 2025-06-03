@@ -5,22 +5,28 @@
 #include <QGraphicsTextItem>
 #include <QPen>
 #include <QBrush>
+#include "../src/Grafo.h"
+#include "mainwindow.h"
 
 static const int NODE_RADIUS = 30;
 static const int VERTICAL_SPACE = 90;
 static const int INITIAL_SPACING = 200;
 
+
 telaArvore::telaArvore(QWidget *parent) :
     QWidget(parent),
 
-  ui(new Ui::telaArvore)
+    ui(new Ui::telaArvore)
+
 {
     ui->setupUi(this);
+
+     mainW = qobject_cast<MainWindow*>(parent);
 
     scene = new QGraphicsScene(this);
     ui->graphicsViewArvore->setScene(scene);
 
-    arvore.criarNo("Raiz", false, 10);
+    arvore.criarNo("Raiz", false, 50);
     desenharArvore(arvore.getRaiz(), 400, 20, INITIAL_SPACING);
 }
 
@@ -33,43 +39,27 @@ void telaArvore::desenharArvore(noArvore* no, int x, int y, int espacamento)
 {
     if (!no) return;
 
-    scene->addEllipse(x, y, NODE_RADIUS, NODE_RADIUS, QPen(Qt::white), QBrush(Qt::black));
-
+    QBrush brushNo;
+    if (no->ehCasa) { brushNo = QBrush(Qt::blue); }
+    scene->addEllipse(x, y, NODE_RADIUS, NODE_RADIUS, QPen(Qt::white), brushNo);
 
     QGraphicsTextItem* text = scene->addText(QString::fromStdString(no->nome));
     QFont font = text->font();
     font.setPointSize(10);
     text->setFont(font);
 
-    // Calcula o bounding box do texto
     QRectF textRect = text->boundingRect();
 
-    // Margem bem pequena
-    const qreal margemX = 6.0;
-    const qreal margemY = 2.0;
-
-    // Centraliza o texto acima do círculo
     qreal textX = x + (NODE_RADIUS - textRect.width()) / 2;
-    qreal textY = y - textRect.height() - margemY - 3;
+    qreal textY = y - textRect.height();
 
-    // Retângulo discreto, horizontal, só um pouco maior que o texto
-    QRectF rectFundo(
-        textX - margemX/2,
-        textY - margemY/2,
-        35,
-        20
-        );
-    QGraphicsRectItem* fundo = scene->addRect(rectFundo, Qt::NoPen, QBrush(QColor(245, 245, 180, 200))); // amarelo claro, levemente translúcido
-
-    fundo->setZValue(0);
     text->setZValue(1);
     text->setPos(textX, textY);
 
-    QString valorStr = QString::number(no->numCasa); // ou use QString::fromStdString(...) se for string
-
+    QString valorStr = QString::number(no->numCasa);
     QGraphicsTextItem* valorText = scene->addText(valorStr);
     QFont valorFont = valorText->font();
-    valorFont.setPointSize(12); // Pode ser maior para destaque
+    valorFont.setPointSize(12);
     valorFont.setBold(true);
     valorText->setFont(valorFont);
 
@@ -80,7 +70,6 @@ void telaArvore::desenharArvore(noArvore* no, int x, int y, int espacamento)
     valorText->setPos(valorX, valorY);
     valorText->setZValue(1);
 
-
     if (no->esquerdo) {
         scene->addLine(x + NODE_RADIUS/2, y + NODE_RADIUS, x - espacamento + NODE_RADIUS/2, y + VERTICAL_SPACE);
         desenharArvore(no->esquerdo, x - espacamento, y + VERTICAL_SPACE, espacamento / 2);
@@ -89,12 +78,6 @@ void telaArvore::desenharArvore(noArvore* no, int x, int y, int espacamento)
         scene->addLine(x + NODE_RADIUS/2, y + NODE_RADIUS, x + espacamento + NODE_RADIUS/2, y + VERTICAL_SPACE);
         desenharArvore(no->direito, x + espacamento, y + VERTICAL_SPACE, espacamento / 2);
     }
-
-}
-
-void telaArvore::ajustarVisualizacao() {
-    QRectF rect = scene->itemsBoundingRect().adjusted(-20, -20, 20, 20);
-    ui->graphicsViewArvore->fitInView(rect, Qt::KeepAspectRatio);
 }
 
 void telaArvore::mostrarArvore(noArvore* raiz) {
@@ -104,7 +87,7 @@ void telaArvore::mostrarArvore(noArvore* raiz) {
     int yInicial = 30;
     int espacamentoInicial = 120;
     desenharArvore(raiz, xInicial, yInicial, espacamentoInicial);
-    ajustarVisualizacao();
+
 }
 
 void telaArvore::on_btAdd_clicked()
@@ -129,10 +112,11 @@ void telaArvore::on_btAdd_clicked()
     scene->clear();
     desenharArvore(arvore.getRaiz(), 400, 20, INITIAL_SPACING);
 
-
     ui->lNum->clear();
     ui->lNome->clear();
     ui->ehCasa->setChecked(false);
+
+    emit arvoreAtualizada();
 }
 
 void telaArvore::on_addEx_clicked()
@@ -140,8 +124,8 @@ void telaArvore::on_addEx_clicked()
     arvore.inserirExemplos();
     scene->clear();
     mostrarArvore(arvore.getRaiz());
+   emit arvoreAtualizada();
 }
-
 
 void telaArvore::on_btRemover_clicked()
 {
@@ -149,4 +133,3 @@ void telaArvore::on_btRemover_clicked()
     scene->clear();
     mostrarArvore(arvore.getRaiz());
 }
-

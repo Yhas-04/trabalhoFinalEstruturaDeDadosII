@@ -38,7 +38,7 @@ void Arvore::inserirExemplos(){
     int n;
     for(int i=0; i<2; i++){
         std::string nomeStr(1, nome);
-        int n = (-100) + rand() % (100 - (-100) +1);
+        int n = (-50) + rand() % (100 - (-50) +1);
         criarNo(nomeStr, ehCasa, n);
         ehCasa = !ehCasa;
         nome++;

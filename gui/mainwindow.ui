@@ -2,69 +2,154 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>387</width>
-    <height>275</height>
+    <width>733</width>
+    <height>400</height>
    </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Noto Kufi Arabic Medium</family>
+    <pointsize>11</pointsize>
+    <bold>false</bold>
+   </font>
+  </property>
+  <property name="mouseTracking">
+   <bool>true</bool>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="windowIcon">
+   <iconset theme="QIcon::ThemeIcon::GoHome"/>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="tabShape">
+   <enum>QTabWidget::Rounded</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="btArvore">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>56</y>
-      <width>80</width>
-      <height>25</height>
+      <x>420</x>
+      <y>350</y>
+      <width>191</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
     </property>
     <property name="text">
      <string>arvore</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btGrafo">
+   <widget class="QPushButton" name="btHuffman">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>100</y>
-      <width>80</width>
-      <height>21</height>
+      <x>90</x>
+      <y>130</y>
+      <width>81</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>grafo</string>
+     <string>Codificar</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QGraphicsView" name="graphicsViewMain">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>136</y>
-      <width>80</width>
+      <x>270</x>
+      <y>20</y>
+      <width>451</width>
+      <height>321</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>0</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Menu:</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowserCodificacao">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>280</y>
+      <width>231</width>
+      <height>101</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lDestino">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>80</y>
+      <width>131</width>
       <height>25</height>
      </rect>
     </property>
-    <property name="text">
-     <string>PushButton</string>
+    <property name="whatsThis">
+     <string/>
+    </property>
+    <property name="accessibleName">
+     <string/>
+    </property>
+    <property name="placeholderText">
+     <string>destino</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lOrigem">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>40</y>
+      <width>131</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>origem</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textEditResultado">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>180</y>
+      <width>231</width>
+      <height>91</height>
+     </rect>
     </property>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>387</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

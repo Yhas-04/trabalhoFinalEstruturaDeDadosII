@@ -16,6 +16,8 @@ public:
     std::vector<std::string> caminhoMinimo(const std::string& origem, const std::string& destino);
     std::vector<std::string> casas;
     std::vector<Aresta> arestas;
+    const std::vector<std::string>& getCasas() const { return casas; }
+    const std::vector<Aresta>& getArestas() const { return arestas; }
 
     Grafo() = default;
     Grafo(class Arvore* arv);
@@ -25,4 +27,5 @@ public:
     bool caminho(class noArvore* raiz, const std::string& nome, std::vector<class noArvore*>& path);
 private:
     void coletaCasas(noArvore* no, std::vector<noArvore*>& listaCasas);
+
 };

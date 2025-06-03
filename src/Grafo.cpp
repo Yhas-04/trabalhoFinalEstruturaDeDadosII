@@ -9,16 +9,6 @@
 #include <unordered_map>
 #include <algorithm>
 
-void Grafo::coletaCasas(noArvore* no, std::vector<noArvore*>& listaCasas) {
-    if (!no) return;
-    if (no->ehCasa) {
-        casas.push_back(no->nome);
-        listaCasas.push_back(no);
-    }
-    coletaCasas(no->esquerdo, listaCasas);
-    coletaCasas(no->direito, listaCasas);
-}
-
 Grafo::Grafo(Arvore* arv) {
     std::vector<noArvore*> listaCasas;
     coletaCasas(arv->getRaiz(), listaCasas);
@@ -36,6 +26,34 @@ Grafo::Grafo(Arvore* arv) {
             arestas.push_back({listaCasas[i]->nome, listaCasas[j]->nome, dist});
         }
     }
+}
+
+noArvore* Grafo::lca(noArvore* raiz, const std::string& nome1, const std::string& nome2) {
+    if (!raiz) return nullptr;
+    if (raiz->nome == nome1 || raiz->nome == nome2)
+        return raiz;
+    noArvore* esq = lca(raiz->esquerdo, nome1, nome2);
+    noArvore* dir = lca(raiz->direito, nome1, nome2);
+    if (esq && dir) return raiz;
+    return esq ? esq : dir;
+}
+
+int Grafo::distanciaEntre(noArvore* raiz, const std::string& nome1, const std::string& nome2) {
+    noArvore* ancestor = lca(raiz, nome1, nome2);
+    std::vector<noArvore*> path1, path2;
+    caminho(ancestor, nome1, path1);
+    caminho(ancestor, nome2, path2);
+    return path1.size() + path2.size() - 1;
+}
+
+void Grafo::coletaCasas(noArvore* no, std::vector<noArvore*>& listaCasas) {
+    if (!no) return;
+    if (no->ehCasa) {
+        casas.push_back(no->nome);
+        listaCasas.push_back(no);
+    }
+    coletaCasas(no->esquerdo, listaCasas);
+    coletaCasas(no->direito, listaCasas);
 }
 
 std::vector<std::string> Grafo::caminhoMinimo(const std::string& origem, const std::string& destino) {
@@ -76,16 +94,6 @@ std::vector<std::string> Grafo::caminhoMinimo(const std::string& origem, const s
     return caminho;
 }
 
-noArvore* Grafo::lca(noArvore* raiz, const std::string& nome1, const std::string& nome2) {
-    if (!raiz) return nullptr;
-    if (raiz->nome == nome1 || raiz->nome == nome2)
-        return raiz;
-    noArvore* esq = lca(raiz->esquerdo, nome1, nome2);
-    noArvore* dir = lca(raiz->direito, nome1, nome2);
-    if (esq && dir) return raiz;
-    return esq ? esq : dir;
-}
-
 bool Grafo::caminho(noArvore* raiz, const std::string& nome, std::vector<noArvore*>& path) {
     if (!raiz) return false;
     path.push_back(raiz);
@@ -97,10 +105,3 @@ bool Grafo::caminho(noArvore* raiz, const std::string& nome, std::vector<noArvor
     return false;
 }
 
-int Grafo::distanciaEntre(noArvore* raiz, const std::string& nome1, const std::string& nome2) {
-    noArvore* ancestor = lca(raiz, nome1, nome2);
-    std::vector<noArvore*> path1, path2;
-    caminho(ancestor, nome1, path1);
-    caminho(ancestor, nome2, path2);
-    return path1.size() + path2.size() - 1;
-}

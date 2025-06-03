@@ -10,11 +10,15 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGraphicsView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTextBrowser>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -24,35 +28,61 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QPushButton *btArvore;
-    QPushButton *btGrafo;
-    QPushButton *pushButton_3;
-    QMenuBar *menubar;
-    QStatusBar *statusbar;
+    QPushButton *btHuffman;
+    QGraphicsView *graphicsViewMain;
+    QLabel *label;
+    QTextBrowser *textBrowserCodificacao;
+    QLineEdit *lDestino;
+    QLineEdit *lOrigem;
+    QTextEdit *textEditResultado;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(387, 275);
+        MainWindow->setWindowModality(Qt::WindowModal);
+        MainWindow->resize(733, 400);
+        QFont font;
+        font.setFamily(QString::fromUtf8("Noto Kufi Arabic Medium"));
+        font.setPointSize(11);
+        font.setBold(false);
+        MainWindow->setFont(font);
+        MainWindow->setMouseTracking(true);
+        QIcon icon(QIcon::fromTheme(QString::fromUtf8("QIcon::ThemeIcon::GoHome")));
+        MainWindow->setWindowIcon(icon);
+        MainWindow->setAutoFillBackground(false);
+        MainWindow->setTabShape(QTabWidget::Rounded);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         btArvore = new QPushButton(centralwidget);
         btArvore->setObjectName(QString::fromUtf8("btArvore"));
-        btArvore->setGeometry(QRect(140, 56, 80, 25));
-        btGrafo = new QPushButton(centralwidget);
-        btGrafo->setObjectName(QString::fromUtf8("btGrafo"));
-        btGrafo->setGeometry(QRect(140, 100, 80, 21));
-        pushButton_3 = new QPushButton(centralwidget);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        pushButton_3->setGeometry(QRect(140, 136, 80, 25));
+        btArvore->setGeometry(QRect(420, 350, 191, 31));
+        btArvore->setMouseTracking(true);
+        btHuffman = new QPushButton(centralwidget);
+        btHuffman->setObjectName(QString::fromUtf8("btHuffman"));
+        btHuffman->setGeometry(QRect(90, 130, 81, 31));
+        graphicsViewMain = new QGraphicsView(centralwidget);
+        graphicsViewMain->setObjectName(QString::fromUtf8("graphicsViewMain"));
+        graphicsViewMain->setGeometry(QRect(270, 20, 451, 321));
+        label = new QLabel(centralwidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(-10, 0, 101, 31));
+        label->setTextFormat(Qt::AutoText);
+        label->setScaledContents(false);
+        label->setAlignment(Qt::AlignCenter);
+        textBrowserCodificacao = new QTextBrowser(centralwidget);
+        textBrowserCodificacao->setObjectName(QString::fromUtf8("textBrowserCodificacao"));
+        textBrowserCodificacao->setGeometry(QRect(20, 280, 231, 101));
+        lDestino = new QLineEdit(centralwidget);
+        lDestino->setObjectName(QString::fromUtf8("lDestino"));
+        lDestino->setGeometry(QRect(60, 80, 131, 25));
+        lOrigem = new QLineEdit(centralwidget);
+        lOrigem->setObjectName(QString::fromUtf8("lOrigem"));
+        lOrigem->setGeometry(QRect(60, 40, 131, 25));
+        textEditResultado = new QTextEdit(centralwidget);
+        textEditResultado->setObjectName(QString::fromUtf8("textEditResultado"));
+        textEditResultado->setGeometry(QRect(20, 180, 231, 91));
         MainWindow->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(MainWindow);
-        menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 387, 22));
-        MainWindow->setMenuBar(menubar);
-        statusbar = new QStatusBar(MainWindow);
-        statusbar->setObjectName(QString::fromUtf8("statusbar"));
-        MainWindow->setStatusBar(statusbar);
 
         retranslateUi(MainWindow);
 
@@ -63,8 +93,16 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         btArvore->setText(QCoreApplication::translate("MainWindow", "arvore", nullptr));
-        btGrafo->setText(QCoreApplication::translate("MainWindow", "grafo", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        btHuffman->setText(QCoreApplication::translate("MainWindow", "Codificar", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "Menu:", nullptr));
+#if QT_CONFIG(whatsthis)
+        lDestino->setWhatsThis(QString());
+#endif // QT_CONFIG(whatsthis)
+#if QT_CONFIG(accessibility)
+        lDestino->setAccessibleName(QString());
+#endif // QT_CONFIG(accessibility)
+        lDestino->setPlaceholderText(QCoreApplication::translate("MainWindow", "destino", nullptr));
+        lOrigem->setPlaceholderText(QCoreApplication::translate("MainWindow", "origem", nullptr));
     } // retranslateUi
 
 };

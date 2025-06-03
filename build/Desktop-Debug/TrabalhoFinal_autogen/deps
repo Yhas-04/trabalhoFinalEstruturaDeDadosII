@@ -398,6 +398,8 @@ TrabalhoFinal_autogen/timestamp: \
 	/usr/wsProjects/wsCLion/TrabalhoFinal/src/Arvore.h \
 	/usr/wsProjects/wsCLion/TrabalhoFinal/src/Grafo.cpp \
 	/usr/wsProjects/wsCLion/TrabalhoFinal/src/Grafo.h \
+	/usr/wsProjects/wsCLion/TrabalhoFinal/src/Huffman.cpp \
+	/usr/wsProjects/wsCLion/TrabalhoFinal/src/Huffman.h \
 	/usr/wsProjects/wsCLion/TrabalhoFinal/src/noArvore.h \
 	/usr/wsProjects/wsCLion/TrabalhoFinal/gui/mainwindow.ui \
 	/usr/wsProjects/wsCLion/TrabalhoFinal/gui/telaarvore.ui \

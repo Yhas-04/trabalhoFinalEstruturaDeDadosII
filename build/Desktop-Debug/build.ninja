@@ -97,6 +97,14 @@ build CMakeFiles/TrabalhoFinal.dir/src/Grafo.cpp.o: CXX_COMPILER__TrabalhoFinal_
   OBJECT_DIR = CMakeFiles/TrabalhoFinal.dir
   OBJECT_FILE_DIR = CMakeFiles/TrabalhoFinal.dir/src
 
+build CMakeFiles/TrabalhoFinal.dir/src/Huffman.cpp.o: CXX_COMPILER__TrabalhoFinal_Debug /usr/wsProjects/wsCLion/TrabalhoFinal/src/Huffman.cpp || cmake_object_order_depends_target_TrabalhoFinal
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB
+  DEP_FILE = CMakeFiles/TrabalhoFinal.dir/src/Huffman.cpp.o.d
+  FLAGS = -DQT_QML_DEBUG -g -fdiagnostics-color=always -fPIC -std=gnu++17
+  INCLUDES = -I/usr/wsProjects/wsCLion/TrabalhoFinal/build/Desktop-Debug/TrabalhoFinal_autogen/include -I/usr/wsProjects/wsCLion/TrabalhoFinal/src -I/usr/wsProjects/wsCLion/TrabalhoFinal/gui -I/usr/wsProjects/wsCLion/TrabalhoFinal/build/Desktop-Debug -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
+  OBJECT_DIR = CMakeFiles/TrabalhoFinal.dir
+  OBJECT_FILE_DIR = CMakeFiles/TrabalhoFinal.dir/src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target TrabalhoFinal
@@ -105,7 +113,7 @@ build CMakeFiles/TrabalhoFinal.dir/src/Grafo.cpp.o: CXX_COMPILER__TrabalhoFinal_
 #############################################
 # Link the executable TrabalhoFinal
 
-build TrabalhoFinal: CXX_EXECUTABLE_LINKER__TrabalhoFinal_Debug CMakeFiles/TrabalhoFinal.dir/TrabalhoFinal_autogen/mocs_compilation.cpp.o CMakeFiles/TrabalhoFinal.dir/main.cpp.o CMakeFiles/TrabalhoFinal.dir/gui/mainwindow.cpp.o CMakeFiles/TrabalhoFinal.dir/gui/telaarvore.cpp.o CMakeFiles/TrabalhoFinal.dir/src/Arvore.cpp.o CMakeFiles/TrabalhoFinal.dir/src/Grafo.cpp.o | /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.15.8 /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.15.8 /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.8 || TrabalhoFinal_autogen TrabalhoFinal_autogen_timestamp_deps
+build TrabalhoFinal: CXX_EXECUTABLE_LINKER__TrabalhoFinal_Debug CMakeFiles/TrabalhoFinal.dir/TrabalhoFinal_autogen/mocs_compilation.cpp.o CMakeFiles/TrabalhoFinal.dir/main.cpp.o CMakeFiles/TrabalhoFinal.dir/gui/mainwindow.cpp.o CMakeFiles/TrabalhoFinal.dir/gui/telaarvore.cpp.o CMakeFiles/TrabalhoFinal.dir/src/Arvore.cpp.o CMakeFiles/TrabalhoFinal.dir/src/Grafo.cpp.o CMakeFiles/TrabalhoFinal.dir/src/Huffman.cpp.o | /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.15.8 /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.15.8 /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.8 || TrabalhoFinal_autogen TrabalhoFinal_autogen_timestamp_deps
   FLAGS = -DQT_QML_DEBUG -g
   LINK_LIBRARIES = /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.15.8  /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.15.8  /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.8
   OBJECT_DIR = CMakeFiles/TrabalhoFinal.dir

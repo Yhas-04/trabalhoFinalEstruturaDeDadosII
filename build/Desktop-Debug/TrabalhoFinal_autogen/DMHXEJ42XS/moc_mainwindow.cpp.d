@@ -331,6 +331,8 @@
   /usr/lib/gcc/x86_64-linux-gnu/12/include/stddef.h \
   /usr/lib/gcc/x86_64-linux-gnu/12/include/stdint.h \
   /usr/lib/gcc/x86_64-linux-gnu/12/include/syslimits.h \
+  /usr/wsProjects/wsCLion/TrabalhoFinal/gui/mainwindow.h \
   /usr/wsProjects/wsCLion/TrabalhoFinal/gui/telaarvore.h \
   /usr/wsProjects/wsCLion/TrabalhoFinal/src/Arvore.h \
+  /usr/wsProjects/wsCLion/TrabalhoFinal/src/Grafo.h \
   /usr/wsProjects/wsCLion/TrabalhoFinal/src/noArvore.h

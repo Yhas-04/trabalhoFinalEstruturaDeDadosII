@@ -25,7 +25,6 @@ class Ui_telaArvore
 public:
     QCheckBox *ehCasa;
     QPushButton *btAdd;
-    QPushButton *btVoltar;
     QGraphicsView *graphicsViewArvore;
     QLabel *label;
     QLineEdit *lNome;
@@ -47,9 +46,6 @@ public:
         btAdd = new QPushButton(telaArvore);
         btAdd->setObjectName(QString::fromUtf8("btAdd"));
         btAdd->setGeometry(QRect(430, 130, 80, 25));
-        btVoltar = new QPushButton(telaArvore);
-        btVoltar->setObjectName(QString::fromUtf8("btVoltar"));
-        btVoltar->setGeometry(QRect(10, 320, 80, 25));
         graphicsViewArvore = new QGraphicsView(telaArvore);
         graphicsViewArvore->setObjectName(QString::fromUtf8("graphicsViewArvore"));
         graphicsViewArvore->setGeometry(QRect(10, 10, 381, 251));
@@ -73,10 +69,10 @@ public:
         btRemover->setGeometry(QRect(430, 240, 80, 25));
         addEx = new QPushButton(telaArvore);
         addEx->setObjectName(QString::fromUtf8("addEx"));
-        addEx->setGeometry(QRect(180, 290, 41, 25));
+        addEx->setGeometry(QRect(160, 310, 41, 25));
         label_3 = new QLabel(telaArvore);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(140, 270, 121, 17));
+        label_3->setGeometry(QRect(120, 280, 121, 17));
 
         retranslateUi(telaArvore);
 
@@ -88,7 +84,6 @@ public:
         telaArvore->setWindowTitle(QCoreApplication::translate("telaArvore", "Form", nullptr));
         ehCasa->setText(QCoreApplication::translate("telaArvore", "CheckBox", nullptr));
         btAdd->setText(QCoreApplication::translate("telaArvore", "Adicionar", nullptr));
-        btVoltar->setText(QCoreApplication::translate("telaArvore", "voltar", nullptr));
         label->setText(QCoreApplication::translate("telaArvore", "Criar N\303\263:", nullptr));
         label_2->setText(QCoreApplication::translate("telaArvore", "Excluir N\303\263:", nullptr));
         btRemover->setText(QCoreApplication::translate("telaArvore", "Remover", nullptr));
