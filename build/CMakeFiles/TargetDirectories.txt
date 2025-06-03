@@ -1,0 +1,4 @@
+/usr/wsProjects/wsCLion/TrabalhoFinal/build/CMakeFiles/TrabalhoFinal.dir
+/usr/wsProjects/wsCLion/TrabalhoFinal/build/CMakeFiles/edit_cache.dir
+/usr/wsProjects/wsCLion/TrabalhoFinal/build/CMakeFiles/rebuild_cache.dir
+/usr/wsProjects/wsCLion/TrabalhoFinal/build/CMakeFiles/TrabalhoFinal_autogen.dir

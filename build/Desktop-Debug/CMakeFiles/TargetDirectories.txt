@@ -1,0 +1,5 @@
+/usr/wsProjects/wsCLion/TrabalhoFinal/build/Desktop-Debug/CMakeFiles/TrabalhoFinal.dir
+/usr/wsProjects/wsCLion/TrabalhoFinal/build/Desktop-Debug/CMakeFiles/edit_cache.dir
+/usr/wsProjects/wsCLion/TrabalhoFinal/build/Desktop-Debug/CMakeFiles/rebuild_cache.dir
+/usr/wsProjects/wsCLion/TrabalhoFinal/build/Desktop-Debug/CMakeFiles/TrabalhoFinal_autogen_timestamp_deps.dir
+/usr/wsProjects/wsCLion/TrabalhoFinal/build/Desktop-Debug/CMakeFiles/TrabalhoFinal_autogen.dir
