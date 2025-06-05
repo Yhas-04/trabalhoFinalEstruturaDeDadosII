@@ -33,13 +33,12 @@ public:
     QLineEdit *lRemov;
     QPushButton *btRemover;
     QPushButton *addEx;
-    QLabel *label_3;
 
     void setupUi(QWidget *telaArvore)
     {
         if (telaArvore->objectName().isEmpty())
             telaArvore->setObjectName(QString::fromUtf8("telaArvore"));
-        telaArvore->resize(543, 359);
+        telaArvore->resize(553, 316);
         ehCasa = new QCheckBox(telaArvore);
         ehCasa->setObjectName(QString::fromUtf8("ehCasa"));
         ehCasa->setGeometry(QRect(430, 100, 82, 23));
@@ -69,10 +68,7 @@ public:
         btRemover->setGeometry(QRect(430, 240, 80, 25));
         addEx = new QPushButton(telaArvore);
         addEx->setObjectName(QString::fromUtf8("addEx"));
-        addEx->setGeometry(QRect(160, 310, 41, 25));
-        label_3 = new QLabel(telaArvore);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(120, 280, 121, 17));
+        addEx->setGeometry(QRect(100, 270, 181, 31));
 
         retranslateUi(telaArvore);
 
@@ -87,8 +83,7 @@ public:
         label->setText(QCoreApplication::translate("telaArvore", "Criar N\303\263:", nullptr));
         label_2->setText(QCoreApplication::translate("telaArvore", "Excluir N\303\263:", nullptr));
         btRemover->setText(QCoreApplication::translate("telaArvore", "Remover", nullptr));
-        addEx->setText(QCoreApplication::translate("telaArvore", "add", nullptr));
-        label_3->setText(QCoreApplication::translate("telaArvore", "Adicionar Exemplos:", nullptr));
+        addEx->setText(QCoreApplication::translate("telaArvore", "Adicionar exemplos", nullptr));
     } // retranslateUi
 
 };

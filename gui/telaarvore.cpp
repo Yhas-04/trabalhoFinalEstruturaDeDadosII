@@ -22,11 +22,18 @@ telaArvore::telaArvore(QWidget *parent) :
     ui->setupUi(this);
 
      mainW = qobject_cast<MainWindow*>(parent);
+    ui->addEx->setStyleSheet("background-color:#F0EAD6; color: black;");
+    ui->btAdd->setStyleSheet("background-color:#F0EAD6; color: black;");
+    ui->btRemover->setStyleSheet("background-color:#F0EAD6; color: black;");
+    ui->lNum->setStyleSheet("background-color:#141c2d; color: white;");
+    ui->lNome->setStyleSheet("background-color:#141c2d; color: white;");
+    ui->graphicsViewArvore->setStyleSheet("background-color:#141c2d; color: white;");
+    ui->lRemov->setStyleSheet("background-color:#141c2d; color: white;");
 
     scene = new QGraphicsScene(this);
     ui->graphicsViewArvore->setScene(scene);
 
-    arvore.criarNo("Raiz", false, 50);
+    arvore.criarNo("Raiz", true, 50);
     desenharArvore(arvore.getRaiz(), 400, 20, INITIAL_SPACING);
 }
 
@@ -40,7 +47,7 @@ void telaArvore::desenharArvore(noArvore* no, int x, int y, int espacamento)
     if (!no) return;
 
     QBrush brushNo;
-    if (no->ehCasa) { brushNo = QBrush(Qt::blue); }
+    if (no->ehCasa) { brushNo = QBrush(Qt::red); }
     scene->addEllipse(x, y, NODE_RADIUS, NODE_RADIUS, QPen(Qt::white), brushNo);
 
     QGraphicsTextItem* text = scene->addText(QString::fromStdString(no->nome));
@@ -129,7 +136,30 @@ void telaArvore::on_addEx_clicked()
 
 void telaArvore::on_btRemover_clicked()
 {
-    arvore.removerNo(arvore.getRaiz(), ui->lRemov->text().toInt());
+    QString nomeQt = ui->lRemov->text();
+    if (nomeQt.isEmpty()) {
+        qDebug() << "Nome vazio!";
+        return;
+    }
+    std::string nome = nomeQt.toStdString();
+
+    noArvore* no = arvore.buscarPorNome(arvore.getRaiz(), nome);
+    if (!no) {
+        qDebug() << "Nó não encontrado!";
+        return;
+    }
+
+    if (no->ehCasa && mainW) {
+        mainW->grafo.removerVertice(no->nome);
+    }
+
+    bool removido = arvore.removerPorNome(nome);
+    if (!removido) {
+        qDebug() << "Falha ao remover o nó!";
+        return;
+    }
+
     scene->clear();
     mostrarArvore(arvore.getRaiz());
+    emit arvoreAtualizada();
 }

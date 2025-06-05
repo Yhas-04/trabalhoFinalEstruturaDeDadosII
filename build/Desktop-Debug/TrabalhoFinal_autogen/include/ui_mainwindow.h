@@ -17,7 +17,6 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 
@@ -30,18 +29,21 @@ public:
     QPushButton *btArvore;
     QPushButton *btHuffman;
     QGraphicsView *graphicsViewMain;
-    QLabel *label;
-    QTextBrowser *textBrowserCodificacao;
     QLineEdit *lDestino;
     QLineEdit *lOrigem;
     QTextEdit *textEditResultado;
+    QLabel *lBOrigem;
+    QLabel *lBDestino;
+    QPushButton *btAGM;
+    QTextEdit *teAGM;
+    QLabel *label;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->setWindowModality(Qt::WindowModal);
-        MainWindow->resize(733, 400);
+        MainWindow->resize(729, 435);
         QFont font;
         font.setFamily(QString::fromUtf8("Noto Kufi Arabic Medium"));
         font.setPointSize(11);
@@ -56,35 +58,57 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         btArvore = new QPushButton(centralwidget);
         btArvore->setObjectName(QString::fromUtf8("btArvore"));
-        btArvore->setGeometry(QRect(420, 350, 191, 31));
+        btArvore->setGeometry(QRect(420, 390, 191, 31));
         btArvore->setMouseTracking(true);
         btHuffman = new QPushButton(centralwidget);
         btHuffman->setObjectName(QString::fromUtf8("btHuffman"));
-        btHuffman->setGeometry(QRect(90, 130, 81, 31));
+        btHuffman->setGeometry(QRect(120, 140, 61, 31));
+        btHuffman->setAutoDefault(false);
+        btHuffman->setFlat(false);
         graphicsViewMain = new QGraphicsView(centralwidget);
         graphicsViewMain->setObjectName(QString::fromUtf8("graphicsViewMain"));
-        graphicsViewMain->setGeometry(QRect(270, 20, 451, 321));
-        label = new QLabel(centralwidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(-10, 0, 101, 31));
-        label->setTextFormat(Qt::AutoText);
-        label->setScaledContents(false);
-        label->setAlignment(Qt::AlignCenter);
-        textBrowserCodificacao = new QTextBrowser(centralwidget);
-        textBrowserCodificacao->setObjectName(QString::fromUtf8("textBrowserCodificacao"));
-        textBrowserCodificacao->setGeometry(QRect(20, 280, 231, 101));
+        graphicsViewMain->setGeometry(QRect(310, 90, 401, 291));
+        graphicsViewMain->viewport()->setProperty("cursor", QVariant(QCursor(Qt::OpenHandCursor)));
+        graphicsViewMain->setAutoFillBackground(false);
+        graphicsViewMain->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        graphicsViewMain->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        graphicsViewMain->setSizeAdjustPolicy(QAbstractScrollArea::AdjustIgnored);
+        QBrush brush(QColor(20, 28, 45, 255));
+        brush.setStyle(Qt::NoBrush);
+        graphicsViewMain->setBackgroundBrush(brush);
+        graphicsViewMain->setInteractive(true);
         lDestino = new QLineEdit(centralwidget);
         lDestino->setObjectName(QString::fromUtf8("lDestino"));
-        lDestino->setGeometry(QRect(60, 80, 131, 25));
+        lDestino->setGeometry(QRect(90, 100, 141, 25));
         lOrigem = new QLineEdit(centralwidget);
         lOrigem->setObjectName(QString::fromUtf8("lOrigem"));
-        lOrigem->setGeometry(QRect(60, 40, 131, 25));
+        lOrigem->setGeometry(QRect(90, 60, 141, 25));
         textEditResultado = new QTextEdit(centralwidget);
         textEditResultado->setObjectName(QString::fromUtf8("textEditResultado"));
-        textEditResultado->setGeometry(QRect(20, 180, 231, 91));
+        textEditResultado->setGeometry(QRect(310, 10, 401, 71));
+        textEditResultado->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        textEditResultado->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        lBOrigem = new QLabel(centralwidget);
+        lBOrigem->setObjectName(QString::fromUtf8("lBOrigem"));
+        lBOrigem->setGeometry(QRect(60, 60, 61, 21));
+        lBDestino = new QLabel(centralwidget);
+        lBDestino->setObjectName(QString::fromUtf8("lBDestino"));
+        lBDestino->setGeometry(QRect(60, 100, 61, 21));
+        btAGM = new QPushButton(centralwidget);
+        btAGM->setObjectName(QString::fromUtf8("btAGM"));
+        btAGM->setGeometry(QRect(110, 390, 80, 25));
+        teAGM = new QTextEdit(centralwidget);
+        teAGM->setObjectName(QString::fromUtf8("teAGM"));
+        teAGM->setGeometry(QRect(30, 180, 251, 201));
+        label = new QLabel(centralwidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(60, 10, 211, 31));
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
+
+        btHuffman->setDefault(false);
+
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
@@ -92,9 +116,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        btArvore->setText(QCoreApplication::translate("MainWindow", "arvore", nullptr));
-        btHuffman->setText(QCoreApplication::translate("MainWindow", "Codificar", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "Menu:", nullptr));
+        btArvore->setText(QCoreApplication::translate("MainWindow", "\303\201rvore", nullptr));
+        btHuffman->setText(QCoreApplication::translate("MainWindow", "OK", nullptr));
 #if QT_CONFIG(whatsthis)
         lDestino->setWhatsThis(QString());
 #endif // QT_CONFIG(whatsthis)
@@ -103,6 +126,11 @@ public:
 #endif // QT_CONFIG(accessibility)
         lDestino->setPlaceholderText(QCoreApplication::translate("MainWindow", "destino", nullptr));
         lOrigem->setPlaceholderText(QCoreApplication::translate("MainWindow", "origem", nullptr));
+        textEditResultado->setPlaceholderText(QCoreApplication::translate("MainWindow", "Caminho m\303\255nimo de Dijkstra", nullptr));
+        lBOrigem->setText(QString());
+        lBDestino->setText(QString());
+        btAGM->setText(QCoreApplication::translate("MainWindow", "AGM", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "Buscar Caminho M\303\255nimo:", nullptr));
     } // retranslateUi
 
 };

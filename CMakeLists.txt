@@ -20,7 +20,7 @@ set(SOURCES
     gui/telaarvore.cpp
     src/Arvore.cpp
     src/Grafo.cpp
-    src/Huffman.cpp
+    src/AGM.cpp
 )
 
 set(HEADERS
@@ -29,7 +29,7 @@ set(HEADERS
     src/Arvore.h
     src/Grafo.h
     src/noArvore.h
-    src/Huffman.h
+    src/AGM.h
 )
 
 add_executable(TrabalhoFinal

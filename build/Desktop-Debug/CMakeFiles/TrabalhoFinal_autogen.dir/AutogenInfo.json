@@ -86,6 +86,12 @@
 			null
 		],
 		[
+			"/usr/wsProjects/wsCLion/TrabalhoFinal/src/AGM.h",
+			"MU",
+			"UVLADIE3JM/moc_AGM.cpp",
+			null
+		],
+		[
 			"/usr/wsProjects/wsCLion/TrabalhoFinal/src/Arvore.h",
 			"MU",
 			"UVLADIE3JM/moc_Arvore.cpp",
@@ -95,12 +101,6 @@
 			"/usr/wsProjects/wsCLion/TrabalhoFinal/src/Grafo.h",
 			"MU",
 			"UVLADIE3JM/moc_Grafo.cpp",
-			null
-		],
-		[
-			"/usr/wsProjects/wsCLion/TrabalhoFinal/src/Huffman.h",
-			"MU",
-			"UVLADIE3JM/moc_Huffman.cpp",
 			null
 		],
 		[
@@ -174,9 +174,9 @@
 			null
 		],
 		[ "/usr/wsProjects/wsCLion/TrabalhoFinal/main.cpp", "MU", null ],
+		[ "/usr/wsProjects/wsCLion/TrabalhoFinal/src/AGM.cpp", "MU", null ],
 		[ "/usr/wsProjects/wsCLion/TrabalhoFinal/src/Arvore.cpp", "MU", null ],
-		[ "/usr/wsProjects/wsCLion/TrabalhoFinal/src/Grafo.cpp", "MU", null ],
-		[ "/usr/wsProjects/wsCLion/TrabalhoFinal/src/Huffman.cpp", "MU", null ]
+		[ "/usr/wsProjects/wsCLion/TrabalhoFinal/src/Grafo.cpp", "MU", null ]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],
